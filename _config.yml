@@ -1,0 +1,17 @@
+# Setup
+title:        Verify News
+tagline:      Algorithmic and automated news verification
+baseurl:      ""
+paginate:     1
+
+# About/contact
+author:
+  name:       Christopher Chen, Nate Brennan, Harrison Xu, Jay Khurana
+  url:        https://verifynews.github.io/verifynew
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown

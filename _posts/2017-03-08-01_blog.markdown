@@ -1,0 +1,55 @@
+---
+layout: default
+title:  "Verifying News: First Blog Post"
+date:   2017-03-08 20:04:00
+categories: main
+---
+# Verifying News: First Blog
+
+## Overview
+
+The end goal for our project is designing an algorithm for accurately verifying the authenticity of a news article at a given URL. User’s will be able to employ this algorithm through a chrome extension and web app. A figure outlining our current proposed approach is below.
+
+![News Verification Data Flow]({{ site.url }}/assets/dataflow.png)
+
+## What We’ve Accomplished
+
+We wanted to ensure we had a solid plan going forward so invested our resources in reviewing and updating our goals (see timeline below). We reviewed the information and methods of acquiring data from Webhose.io in order to design an efficient database schema (below). We also have secured funds from Brown University for our API calls and storage via the Explore Grant. We have also transitioned to Microsoft’s DreamSpark for students to store our data. Before the midterm report we hope to add some data to our relational databases following our schema and run some basic analyses.
+
+## Tentative Database Schema
+
+Our tentative Star Schema diagram which displays how we plan to save our data is below. All the data metrics are already available through webhose.io given a news article URL.
+
+![News Verification Star Schema]({{ site.url }}/assets/starschema.png)
+
+## Timeline
+The following timeline sets approximate goals for where we want to be with our project.
+
+### 3/6:
+Finish migration
+Fix Github
+Rewrite DB Loading
+Script + Migrate (Start)
+Plan for real schema
+### 3/13:
+Meet with Shai to discuss pricing
+Finish Schema
+Finish midterm report + visualization
+Detailed algorithm detail training hypotheses (Discuss with profs)
+Binnig
+Eli
+Potter (mb)
+Pedro (mb)
+### 3/20:
+Start testing hypotheses from hypotheses investigations
+
+### 3/27, 4/3: Spring break
+Web app
+Algo
+
+### 4/10:
+Put it all together and sign up for APIs
+Start putting to the test, paying money
+
+### 4/17:
+Clean up + Poster
