@@ -10,7 +10,7 @@ categories: main
 
 The end goal for our project is designing an algorithm for accurately verifying the authenticity of a news article at a given URL. User’s will be able to employ this algorithm through a chrome extension and web app. A figure outlining our current proposed approach is below.
 
-![News Verification Data Flow]({{ site.url }}/assets/dataflow.png)
+![News Verification Data Flow]({{ site.url }}/verifynews/assets/dataflow.png)
 
 ## What We’ve Accomplished
 
@@ -20,7 +20,7 @@ We wanted to ensure we had a solid plan going forward so invested our resources 
 
 Our tentative Star Schema diagram which displays how we plan to save our data is below. All the data metrics are already available through webhose.io given a news article URL.
 
-![News Verification Star Schema]({{ site.url }}/assets/starschema.png)
+![News Verification Star Schema]({{ site.url }}/verifynews/assets/starschema.png)
 
 ## Timeline
 The following timeline sets approximate goals for where we want to be with our project.
