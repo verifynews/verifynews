@@ -4,7 +4,7 @@ title:  "Verifying News: Midterm Blog Post"
 date:   2017-03-22 20:04:00
 categories: main
 ---
-# Verifying News: First Blog
+# Verifying News: Midterm Blog
 
 ## Overview
 
