@@ -1,55 +1,34 @@
 ---
 layout: default
-title:  "Verifying News: First Blog Post"
-date:   2017-03-08 20:04:00
+title:  "Verifying News: Midterm Blog Post"
+date:   2017-03-22 20:04:00
 categories: main
 ---
 # Verifying News: First Blog
 
 ## Overview
 
-The end goal for our project is designing an algorithm for accurately verifying the authenticity of a news article at a given URL. User’s will be able to employ this algorithm through a chrome extension and web app. A figure outlining our current proposed approach is below.
+As a part of the broader fake news verification effort, the CrossCheck team is working to crawl massive amounts of news sources online. We have a java apache tomcat client running on Azure actively crawling every five minutes for the most recent news sources on the internet, parsing out relevant information via our endpoint API webhose.io, and storing select, useful information in a cloud-based SQL server. Below is our database schema describing just about every bit of data we're examining. Some questions we're investigating include: spam correlation/source citing correlation with news veracity; News verification as a correlation metric - if other news sources are talking about similar topics, how much more likely is a source to be 'verified'?
 
-![News Verification Data Flow]({{ site.url }}/verifynews/assets/dataflow.png)
+## Hardest Parts
+Hardest parts of the project include: choosing an appropriate relational dababase schema, parsing the data from websites/news sourcecs, and hosting a server on APACHE Tomcat. 
 
-## What We’ve Accomplished
+## Technologies we're using
+Technologies we're using: Django webframe, Microsoft SQL Server, Apache Tomcat
 
-We wanted to ensure we had a solid plan going forward so invested our resources in reviewing and updating our goals (see timeline below). We reviewed the information and methods of acquiring data from Webhose.io in order to design an efficient database schema (below). We also have secured funds from Brown University for our API calls and storage via the Explore Grant. We have also transitioned to Microsoft’s DreamSpark for students to store our data. Before the midterm report we hope to add some data to our relational databases following our schema and run some basic analyses.
+## Concrete results
+We have tens of thousands of news articles, information fully parsed, stored in our cloud-based databases. We've yet to perfect and run our algorithm, but the data is there and ready to be analyzed
 
-## Tentative Database Schema
+## Biggest problems we're facing
+Biggest problem? No doubt optimizing our algorithm to handle every imaginable news source and edge case: local news sources, fresh news sources, little-known news sources, sources with poor grammar, sources with unconventional writing styles/diction
 
-Our tentative Star Schema diagram which displays how we plan to save our data is below. All the data metrics are already available through webhose.io given a news article URL.
+## Initial Insights
 
-![News Verification Star Schema]({{ site.url }}/verifynews/assets/starschema.png)
+Our initial insights: fake news verification is an incredibly touchy subject. It is literally impossible to please everyone. We're hoping, however, that we can show our audience that our approach is sufficiently unbiased so as to please liberals and conservatives alike. Further, there's just so much junk data when you're crawling in massive volumes. Most won't notice if a single news article in a hundred turns out completely bogus in our databases, but when you have on the order of tens of thousands, these things really rack up errors. 
 
-## Timeline
-The following timeline sets approximate goals for where we want to be with our project.
+## Are we on track?
+We are absolutely on track with the project. We're now proceeding on creating the Django webserver.
 
-### 3/6:
-Finish migration
-Fix Github
-Rewrite DB Loading
-Script + Migrate (Start)
-Plan for real schema
-### 3/13:
-Meet with Shai to discuss pricing
-Finish Schema
-Finish midterm report + visualization
-Detailed algorithm detail training hypotheses (Discuss with profs)
-Binnig
-Eli
-Potter (mb)
-Pedro (mb)
-### 3/20:
-Start testing hypotheses from hypotheses investigations
 
-### 3/27, 4/3: Spring break
-Web app
-Algo
-
-### 4/10:
-Put it all together and sign up for APIs
-Start putting to the test, paying money
-
-### 4/17:
-Clean up + Poster
+## Going forward?
+Given the initial results, even from our rough-draft algorithm, the results are incredibly promising. We've far exceeded the >70% threshold we were looking for. Things can only improve as we seek more advice on the algorithmic approach from professors and finetune our machine learning model. 
