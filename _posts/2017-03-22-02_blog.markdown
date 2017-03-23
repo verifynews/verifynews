@@ -16,6 +16,9 @@ Hardest parts of the project include: choosing an appropriate relational dababas
 ## Technologies we're using
 Technologies we're using: Django webframe, Microsoft SQL Server, Apache Tomcat
 
+## Visualizations
+
+[logo]: https://github.com/verifynews/verifynews/blob/master/_posts/59A373AF-0BE9-4549-B272-E93EBC44A506.png "Logo Title Text 2"
 ## Concrete results
 We have tens of thousands of news articles, information fully parsed, stored in our cloud-based databases. We've yet to perfect and run our algorithm, but the data is there and ready to be analyzed
 
