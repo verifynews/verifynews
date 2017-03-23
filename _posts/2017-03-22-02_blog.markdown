@@ -17,6 +17,8 @@ Hardest parts of the project include: choosing an appropriate relational dababas
 Technologies we're using: Django webframe, Microsoft SQL Server, Apache Tomcat
 
 ## Visualizations
+Reference-style: 
+![alt text][logo]
 
 [logo]: https://github.com/verifynews/verifynews/blob/master/_posts/59A373AF-0BE9-4549-B272-E93EBC44A506.png "Logo Title Text 2"
 ## Concrete results
