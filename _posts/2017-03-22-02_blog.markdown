@@ -19,19 +19,19 @@ Technologies we're using: Django webframe, Microsoft SQL Server, Apache Tomcat
 ## Visualizations
 ![alt text][logo]
 
-[logo]: https://github.com/verifynews/verifynews/blob/master/_posts/59A373AF-0BE9-4549-B272-E93EBC44A506.png "Logo Title Text 2"
+[logo]: https://github.com/verifynews/verifynews/blob/master/_posts/59A373AF-0BE9-4549-B272-E93EBC44A506.png "visualization 1"
 
 ![alt text][logo]
 
-[logo]: https://github.com/verifynews/verifynews/blob/master/_posts/0968D4A8-E3FA-4FCE-A73C-3FB26281F65A.pngg "Logo Title Text 2"
+[logo]: https://github.com/verifynews/verifynews/blob/master/_posts/0968D4A8-E3FA-4FCE-A73C-3FB26281F65A.pngg "visualization 2"
 
 ![alt text][logo]
 
-[logo]: https://github.com/verifynews/verifynews/blob/master/_posts/489200C6-5AC4-4400-AE45-BEB8696BBB29.png "Logo Title Text 2"
+[logo]: https://github.com/verifynews/verifynews/blob/master/_posts/489200C6-5AC4-4400-AE45-BEB8696BBB29.png "visualization 3"
 
 ![alt text][logo]
 
-[logo]: https://github.com/verifynews/verifynews/blob/master/_posts/A2FBEB89-7CF6-4E99-8A93-79F6CA00725C.png "Logo Title Text 2"
+[logo]: https://github.com/verifynews/verifynews/blob/master/_posts/A2FBEB89-7CF6-4E99-8A93-79F6CA00725C.png "visualization 4"
 ## Concrete results
 We have tens of thousands of news articles, information fully parsed, stored in our cloud-based databases. We've yet to perfect and run our algorithm, but the data is there and ready to be analyzed
 
