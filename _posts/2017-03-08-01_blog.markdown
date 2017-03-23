@@ -11,7 +11,9 @@ categories: main
 The end goal for our project is designing an algorithm for accurately verifying the authenticity of a news article at a given URL. User’s will be able to employ this algorithm through a chrome extension and web app. A figure outlining our current proposed approach is below.
 
 ![News Verification Data Flow]({{ site.url }}/assets/dataflow.png)
- ![News Verification Data Flow]({{ site.url }}/verifynews/assets/dataflow.png)
+
+
+![News Verification Data Flow]({{ site.url }}/verifynews/assets/dataflow.png)
 
 ## What We’ve Accomplished
 
