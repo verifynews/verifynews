@@ -10,13 +10,8 @@ categories: main
 
 The end goal for our project is designing an algorithm for accurately verifying the authenticity of a news article at a given URL. User’s will be able to employ this algorithm through a chrome extension and web app. A figure outlining our current proposed approach is below.
 
-![News Verification Visualization 1]({{ site.url }}/verifynews/assets/59A373AF-0BE9-4549-B272-E93EBC44A506.png)
-
-![News Verification Visualization 2]({{ site.url }}/verifynews/assets/0968D4A8-E3FA-4FCE-A73C-3FB26281F65A.png)
-
-![News Verification Visualization 3]({{ site.url }}/verifynews/assets/489200C6-5AC4-4400-AE45-BEB8696BBB29.png)
-
-![News Verification Visualization 4]({{ site.url }}/verifynews/assets/A2FBEB89-7CF6-4E99-8A93-79F6CA00725C.png)
+![News Verification Data Flow]({{ site.url }}/assets/dataflow.png)
+ ![News Verification Data Flow]({{ site.url }}/verifynews/assets/dataflow.png)
 
 ## What We’ve Accomplished
 
