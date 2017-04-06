@@ -17,10 +17,48 @@ asynchronous multithreaded approach to maximize efficiency and effective paralle
 runs as an Apache Tomcat Webapp on Microsoft’s Azure server.
 
 ## Django Server
-The Django server is the brain of the backend. Processing user requests as a URL, retrieving information from webhose.io corresponding to that URL and running the information through the algorithm. The backend can easily scale to support milliosn of clients and interfaces seamlessly with our SQL Server. The Django server is also responsible for periodically querying the SQL Server and pre-computing the clusters/category that are used in the algorithm. 
+The Django server is the brain of the backend. Processing user requests as a URL, retrieving information from webhose.io corresponding to that URL and running the information through the algorithm. The
+backend can easily scale to support millions of clients and interfaces seamlessly with our SQL Server. The
+Django server is also responsible for periodically querying the SQL Server and pre-computing the
+clusters/category that are used in the algorithm.
 
-## Technologies we're using
-Technologies we're using: Django webframe, Microsoft SQL Server, Apache Tomcat
+## User Clients
+## Chrome Extension
+Our first client is a chrome extension that works like AdBlock extensions. As users browse the internet,
+the extension checks the site they are on. If the site is considered fake news, the user is alerted. A fancy
+visualization displays when clicked on. The chrome extension also keeps track of news websites that users visit and verify to later be sold to advertisers and news organization (users can opt out and get
+premium feature for 10 USD per month)
+
+## Web and Mobile Apps 
+We are operating under the “lean startup” methodology so we want to get our initial chrome extension
+out there first. Once we do this, we will connect the chrome extension to a web app, a news aggregation
+website that marks articles as verified or not. The web app and mobile apps will use ML algorithms to
+keep track of user preferences. News companies can choose to be featured on the web app by paying a
+fee based on the number of users they would reach.
+
+## API 
+The final user client is a REST-like API. This will allow major clients such as google and facebook to funnel
+millions of calls to the API for massive verification of news articles
+
+Database Schema Design 
+We host our database on Azure and use Microsoft SQL Server. WE have an efficient database schema that allows us to do quick queries and joins given certain selection criteria. 
+
+![News Verification Visualization 1]({{ site.url }}/verifynews/assets/59A373AF-0BE9-4549-B272-E93EBC44A506.png)
+
+## Algorithm Overview
+
+## Step 1: Spam Filtering
+
+Spam scores are calculated by webhose.io using Stanford's NLP library and are clearly distributed differently for fake news sources and
+verified articles. By simply setting a threshold of 0.42, 40% of fake news articles can be distributed.
+When we train a Support Vector Machine Model on Spam Score and Domain Rank, we are able to obtain
+an accuray of about 90% for fake and verified news classification. Note that while this basic algorithm
+works, it is flawed as fake news sources will naturally have less traffic than real news sources. If a fake
+news source with a low spam score recieves a high domain rank, it could be marked as verified.
+Fortunately, there aren’t many of these types of articles. The CrossCheck Score returned by the
+algorithm is 1-spam_score is spam_score > 0.42, the cutoff determined by our simple machine learning
+model. If spam_score <=0.42, we use dimensionality reduction and constant time bayesian agglomerate cluster membership (see below). 
+
 
 ## Visualizations
 ![News Verification Visualization 1]({{ site.url }}/verifynews/assets/59A373AF-0BE9-4549-B272-E93EBC44A506.png)
