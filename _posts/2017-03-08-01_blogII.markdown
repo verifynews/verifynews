@@ -4,6 +4,9 @@ title:  "Verifying News: Blog Post II"
 date:   2017-04-05 20:04:00
 categories: main
 ---
+
+<iframe src="https://onedrive.live.com/embed?cid=C699E5299696AB76&resid=C699E5299696AB76%2128284&authkey=AEmG4T3abZRKwIE&em=2" width="476" height="288" frameborder="0" scrolling="no"></iframe>
+
 # Verifying News: Midterm Blog
 
 # Technical Overview
