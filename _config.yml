@@ -1,8 +1,8 @@
 # Setup
 title:        Verify News
 tagline:      Algorithmic and automated news verification
-baseurl:      ""
-paginate:     1
+baseurl:      "/verifynews"
+paginate:     1f
 
 # About/contact
 author:
