@@ -27,33 +27,14 @@ Here we make the following assumptions:
 We implement all this in python, and in particular we used Jupyter Notebook as an interactive and easy way to explore our data.
 
 ## Exploring the clustering
+Here are the counts per cluster we found with n=20 clusters. 
+![News Verification Visualization 1]({{ site.url }}/verifynews/assets/cluster-counts.png)
 
- 
+From comparing items of similar clusters, unfortunately the information between items was not very similar in many cases. For example, we got a webpage from bloomberg describing subscribing to an evening digest grouped with Trump meeting Xi Jin Ping.
 
-## Technologies we're using
-Technologies we're using: Django webframe, Microsoft SQL Server, Apache Tomcat
+## Challenges and moving forwards
+With this current K-Means clustering, we manually set and test K. The ultimate goal is to use a hierarchical agglomerate clustering with a posterior so that we can compute the probability of a new item being a part of any existing cluster, and the probability for the article being in a new created cluster, with the number of clusters being algorithmically determined. 
 
-## Visualizations
-![News Verification Visualization 1]({{ site.url }}/verifynews/assets/59A373AF-0BE9-4549-B272-E93EBC44A506.png)
+More importantly though, from exploring our current clustering, we need to explore new distance measures and vectorization to capture meaning. Right now, with tf-idf using bigrams as well, the dimensionality seems possibility too high to provide meaningful data. We potentially need to reconsider what method of vectorization we use (if any) and also what distance measure would be appropriate to compare "meaning" between articles.
 
-![News Verification Visualization 2]({{ site.url }}/verifynews/assets/0968D4A8-E3FA-4FCE-A73C-3FB26281F65A.png)
-
-![News Verification Visualization 3]({{ site.url }}/verifynews/assets/489200C6-5AC4-4400-AE45-BEB8696BBB29.png)
-
-![News Verification Visualization 4]({{ site.url }}/verifynews/assets/A2FBEB89-7CF6-4E99-8A93-79F6CA00725C.png)
-## Concrete results
-We have tens of thousands of news articles, information fully parsed, stored in our cloud-based databases. We've yet to perfect and run our algorithm, but the data is there and ready to be analyzed
-
-## Biggest problems we're facing
-Biggest problem? No doubt optimizing our algorithm to handle every imaginable news source and edge case: local news sources, fresh news sources, little-known news sources, sources with poor grammar, sources with unconventional writing styles/diction
-
-## Initial Insights
-
-Our initial insights: fake news verification is an incredibly touchy subject. It is literally impossible to please everyone. We're hoping, however, that we can show our audience that our approach is sufficiently unbiased so as to please liberals and conservatives alike. Further, there's just so much junk data when you're crawling in massive volumes. Most won't notice if a single news article in a hundred turns out completely bogus in our databases, but when you have on the order of tens of thousands, these things really rack up errors. 
-
-## Are we on track?
-We are absolutely on track with the project. We're now proceeding on creating the Django webserver.
-
-
-## Going forward?
-Given the initial results, even from our rough-draft algorithm, the results are incredibly promising. We've far exceeded the >70% threshold we were looking for. Things can only improve as we seek more advice on the algorithmic approach from professors and finetune our machine learning model. 
+At the same time, we will continue to improve experience in our web tool/application. We are exploring doing live visualization of articles that are being published, and we can cluster and group those items as a part of our final piece.
