@@ -1,10 +1,10 @@
 ---
 layout: default
-title:  "Verifying News: Midterm Blog Post"
-date:   2017-03-22 20:04:00
+title:  "Verifying News: Blog Post 3"
+date:   2017-04-12 19:11:00
 categories: main
 ---
-# Verifying News: Midterm Blog
+# Verifying News: Blog Post 3
 
 ## Overview
 
