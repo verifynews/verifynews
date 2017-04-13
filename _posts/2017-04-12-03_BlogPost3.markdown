@@ -6,12 +6,29 @@ categories: main
 ---
 # Verifying News: Blog Post 3
 
-## Overview
+## What's New?
+Since our midterm blog post, we've done some exciting new work with our machine learning processes. Previously we had fully implemented SVM machine learning classification to work with on our training set, and this week we have new progress implementing some clustering of news articles. What our goal is here is to be able to identify and group articles with similar MEANING from the features provided in the Webhose data and our own web scraping. Trying to capture actual meaning in computing language is very difficult, and something we will describe below, and finally talk about our thoughts going forwards.
 
-As a part of the broader fake news verification effort, the CrossCheck team is working to crawl massive amounts of news sources online. We have a java apache tomcat client running on Azure actively crawling every five minutes for the most recent news sources on the internet, parsing out relevant information via our endpoint API webhose.io, and storing select, useful information in a cloud-based SQL server. Below is our database schema describing just about every bit of data we're examining. Some questions we're investigating include: spam correlation/source citing correlation with news veracity; News verification as a correlation metric - if other news sources are talking about similar topics, how much more likely is a source to be 'verified'?
+## Clustering
+First we researched different papers and read many blogposts regarding clustering articles based on meaning, or containing similar events. One blog post we found that stood out in particular is ![here](blog.chartbeat.com/2015/10/22/identifying-and-clustering-news-events-by-content/). 
 
-## Hardest Parts
-Hardest parts of the project include: choosing an appropriate relational dababase schema, parsing the data from websites/news sourcecs, and hosting a server on APACHE Tomcat. 
+The general approach we implemented, with suggestion from the above blog post was to:
+1. Separate the article text from each article
+2. Use Named Entity Recognition (we used Stanford's NLP NER) to extract significatn entities
+3. Vectorize each article's text using the TF-IDF measure
+4. Run clustering on these vectors recognizing each article
+
+Here we make the following assumptions:
+- We can typically identify a specific event/piece of information by looking at the named/significant entities in a body of an article. In particular we take tagged Location, Person, Organization, Money, Percent, Date, Time from Stanford NLP. 
+- TF-IDF vecorization is a good measure of phrase significance in a particular article, that we can then translate into identifying the "meaning" of a particular article.
+- More...
+
+## Coding
+We implement all this in python, and in particular we used Jupyter Notebook as an interactive and easy way to explore our data.
+
+## Exploring the clustering
+
+ 
 
 ## Technologies we're using
 Technologies we're using: Django webframe, Microsoft SQL Server, Apache Tomcat
