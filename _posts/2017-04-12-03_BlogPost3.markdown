@@ -11,9 +11,9 @@ Since our midterm blog post, we've done some exciting new work with our machine 
 
 ## Training set curation and multinomial naive bayes
 
-<object data="jay.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="jay.pdf">
-        This browser does not support PDFs. Please download the PDF to view it: <a href="jay.pdf">Download PDF</a>.</p>
+<object data="_posts/jay.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="_posts/jay.pdf">
+        This browser does not support PDFs. Please download the PDF to view it: <a href="_posts/jay.pdf">Download PDF</a>.</p>
     </embed>
 </object>
 
