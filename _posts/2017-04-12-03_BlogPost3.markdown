@@ -7,9 +7,19 @@ categories: main
 # Verifying News: Blog Post 3
 
 ## What's New?
-Since our midterm blog post, we've done some exciting new work with our machine learning processes. Previously we had fully implemented SVM machine learning classification to work with on our training set, and this week we have new progress implementing some clustering of news articles. What our goal is here is to be able to identify and group articles with similar MEANING from the features provided in the Webhose data and our own web scraping. Trying to capture actual meaning in computing language is very difficult, and something we will describe below, and finally talk about our thoughts going forwards.
+Since our midterm blog post, we've done some exciting new work with our machine learning processes. Previously we had fully implemented SVM machine learning classification to work with on our training set, and this week we implemented multinomial naive bayes, and clustering of news articles. 
+
+## Training set curation and multinomial naive bayes
+
+<object data="jay.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="jay.pdf">
+        This browser does not support PDFs. Please download the PDF to view it: <a href="jay.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
 
 ## Clustering
+Our goal here is to be able to identify and group articles with similar MEANING from the features provided in the Webhose data and our own web scraping. Trying to capture actual meaning in computing language is very difficult, and something we will describe below, and finally talk about our thoughts going forwards.
+
 First we researched different papers and read many blogposts regarding clustering articles based on meaning, or containing similar events. One blog post we found that stood out in particular is ![here](blog.chartbeat.com/2015/10/22/identifying-and-clustering-news-events-by-content/). 
 
 The general approach we implemented, with suggestion from the above blog post was to:
@@ -23,10 +33,10 @@ Here we make the following assumptions:
 - TF-IDF vecorization is a good measure of phrase significance in a particular article, that we can then translate into identifying the "meaning" of a particular article.
 - More...
 
-## Coding
+### Coding
 We implement all this in python, and in particular we used Jupyter Notebook as an interactive and easy way to explore our data.
 
-## Exploring the clustering
+### Exploring the clustering
 Here are the counts per cluster we found with n=20 clusters. 
 ![News Verification Visualization 1]({{ site.url }}/verifynews/assets/cluster-counts.png)
 
