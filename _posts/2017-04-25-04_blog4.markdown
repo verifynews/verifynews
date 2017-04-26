@@ -6,7 +6,7 @@ categories: main
 ---
 # Verifying News: Blog Post 4
 
-##Latent Dirichlet Allocation for Topic Modeling
+## Latent Dirichlet Allocation for Topic Modeling
 Adding onto our list of machine learning attempts to get better categorization
 of articles so that our clustering/categorization captured clear "meaning" (very subjective),
 we made a basic attempt at leveraging the Latent Dirichlet Allocation technique
