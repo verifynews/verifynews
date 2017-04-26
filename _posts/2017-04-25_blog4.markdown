@@ -1,0 +1,241 @@
+##Latent Dirichlet Allocation for Topic Modeling
+Adding onto our list of machine learning attempts to get better categorization
+of articles so that our clustering/categorization captured clear "meaning" (very subjective),
+we made a basic attempt at leveraging the Latent Dirichlet Allocation technique
+to extract specific topics out of our clustering article data set on Trump.
+
+For a basic rundown of LDA, the thought behind LDA is that every document is
+a mixture of various topics where each document is assigned topics (by LDA). This
+is based on the idea that individual documents only cover a small subset of topics
+and topics use a small set of words frequently.
+
+Loading all of our articles, we trained a LDA model with varying numbers of topics
+to see what level of granularity we could capture, and what levels of granularity
+would be meaningful.
+
+A more in depth description and complicated mathematics can be found here:
+https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
+
+As in previous data exploration with ML models, I utilized Jupyter notebook
+as a convenient way to explore and interact with my data and models.
+
+Here is a snippet of one iteration of a model that I trained with 8 topics  to find:
+
+```python
+    import csv
+    import re
+    import nltk
+    import string
+    from nltk.stem.porter import *
+    from nltk.corpus import stopwords
+    from collections import Counter
+    from gensim import corpora, models, similarities
+    from time import time
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    import pandas as pd
+
+def train_lda_article(filepath, n_topics):
+    """ Retrieves all articles in specified csv file and retrieves all
+    relevant features (currently decided by me) and returns a list for each article
+    with features in vectorized form """
+    documents = get_documents(filepath)
+    tokenized_texts = [tokenize_and_stem(article) for article in documents]
+    #create a Gensim dictionary from the texts
+    dictionary = corpora.Dictionary(tokenized_texts)
+
+    #remove extremes (similar to the min/max df step used when creating the tf-idf matrix)
+    dictionary.filter_extremes(no_below=1, no_above=0.8)
+
+    #convert the dictionary to a bag of words corpus for reference
+    corpus = [dictionary.doc2bow(text) for text in tokenized_texts]
+    lda = models.LdaModel(corpus, num_topics=n_topics, \
+                            id2word=dictionary, \
+                            update_every=8, \
+                            chunksize=10000, \
+                            passes=100)
+    lda.show_topics()
+    lda.save('lda_model_{0}_topics'.format(n_topics))
+    return lda
+
+def tokenize_and_stem(text):
+    tks = get_tokens(text)
+    filtered_stems = [w for w in tks if not w in stopwords.words('english')]
+    stemmer = PorterStemmer()
+    stemmed_tokens = stem_tokens(filtered_stems, stemmer)
+    return stemmed_tokens
+
+def get_documents(filepath):
+    with open(filepath, 'r') as training_file:
+        reader = csv.reader(training_file)
+        #omitted date and time
+        count = 0
+
+        documents = []
+        for row in reader:
+            article_title = row[0]
+            full_text = row[3]
+            documents.append(full_text)
+        return documents
+
+def  get_tokens(sentence):
+    lower = sentence.lower()
+    #remove the punctuation using the character deletion step of translate
+    translator = str.maketrans('', '', string.punctuation)
+    no_punctuation = lower.translate(translator)
+    tokens = nltk.word_tokenize(no_punctuation)
+    return tokens
+
+def stem_tokens(tokens, stemmer):
+    stemmed = []
+    for item in tokens:
+        stemmed.append(stemmer.stem(item))
+    return stemmed
+
+%time lda = train_lda_article('./data/ClusteringTraining.csv',12)
+```
+
+    CPU times: user 41min 45s, sys: 26.3 s, total: 42min 11s
+    Wall time: 1h 27min 52s
+
+
+
+```python
+myLda = models.LdaModel.load('lda_model')
+```
+
+
+```python
+myLda.show_topics()
+```
+
+
+
+
+    [(0,
+      '0.016*"said" + 0.014*"us" + 0.012*"attack" + 0.010*"govern" + 0.009*"syria" + 0.009*"chemic" + 0.009*"syrian" + 0.006*"twitter" + 0.006*"say" + 0.006*"weapon"'),
+     (1,
+      '0.013*"tax" + 0.008*"bill" + 0.008*"imag" + 0.007*"harass" + 0.006*"sexual" + 0.006*"report" + 0.005*"said" + 0.005*"—" + 0.005*"oreilli" + 0.005*"women"'),
+     (2,
+      '0.007*"new" + 0.006*"mr" + 0.005*"look" + 0.005*"show" + 0.005*"star" + 0.005*"photo" + 0.005*"dress" + 0.004*"click" + 0.004*"said" + 0.004*"one"'),
+     (3,
+      '0.007*"year" + 0.006*"percent" + 0.005*"market" + 0.005*"said" + 0.005*"us" + 0.005*"bank" + 0.005*"new" + 0.005*"compani" + 0.004*"like" + 0.004*"would"'),
+     (4,
+      '0.021*"us" + 0.020*"syria" + 0.016*"attack" + 0.013*"said" + 0.013*"chemic" + 0.013*"syrian" + 0.012*"strike" + 0.011*"assad" + 0.010*"militari" + 0.010*"weapon"'),
+     (5,
+      '0.012*"court" + 0.009*"said" + 0.008*"senat" + 0.008*"gorsuch" + 0.006*"state" + 0.005*"justic" + 0.005*"law" + 0.005*"republican" + 0.005*"depart" + 0.005*"suprem"'),
+     (6,
+      '0.014*"said" + 0.008*"clinton" + 0.006*"elect" + 0.006*"attack" + 0.006*"mexico" + 0.005*"—" + 0.005*"peopl" + 0.005*"friday" + 0.005*"us" + 0.005*"one"'),
+     (7,
+      '0.019*"2017" + 0.016*"april" + 0.013*"6" + 0.009*"xi" + 0.007*"china" + 0.007*"meet" + 0.007*"said" + 0.006*"chines" + 0.006*"hous" + 0.006*"first"')]
+
+
+
+
+```python
+lda.show_topics()
+```
+
+
+    ---------------------------------------------------------------------------
+
+    AttributeError                            Traceback (most recent call last)
+
+    <ipython-input-23-a238bd03d590> in <module>()
+    ----> 1 lda.show_topics()
+
+
+    AttributeError: 'NoneType' object has no attribute 'show_topics'
+
+
+
+```python
+
+```
+
+
+```python
+
+```
+
+Examining these topics that are lsited above (some probability multiplied by top words) we can see distinct topics that do indeed
+seem to contain significant meaning and unique from the rest.  
+
+```
+['said', 'us', 'attack', 'govern', 'syria', 'chemic', 'syrian', 'twitter', 'say', 'weapon', 'use', 'thursday', 'would', 'secur', 'offici', 'account', 'missil', 'air', 'investig', 'peopl']
+
+['tax', 'bill', 'imag', 'harass', 'sexual', 'report', 'said', '—', 'oreilli', 'women', 'million', 'news', 'photo', 'owe', 'back', '36', 'fox', 'claim', 'star', 'time']
+
+['new', 'mr', 'look', 'show', 'star', 'photo', 'dress', 'click', 'said', 'one', 'time', 'instagram', 'black', 'share', 'peopl', 'pictur', 'ap', '—', 'it’', 'red']
+
+['year', 'percent', 'market', 'said', 'us', 'bank', 'new', 'compani', 'like', 'would', 'job', 'also', 'china', 'industri', 'invest', 'investor', 'time', 'trade', 'busi', 'polici']
+
+['us', 'syria', 'attack', 'said', 'chemic', 'syrian', 'strike', 'assad', 'militari', 'weapon', 'missil', 'russia', 'state', 'use', 'unit', 'say', 'air', 'action', 'offici', 'war']
+
+['court', 'said', 'senat', 'gorsuch', 'state', 'justic', 'law', 'republican', 'depart', 'suprem', 'feder', 'vote', 'democrat', '2017', 'us', 'confirm', 'immigr', 'right', 'hous', 'judg']
+
+['said', 'clinton', 'elect', 'attack', 'mexico', '—', 'peopl', 'friday', 'us', 'one', 'new', 'campaign', 'donald', 'republican', 'time', 'stockholm', 'truck', 'armi', 'york', 'nation']
+
+['2017', 'april', '6', 'xi', 'china', 'meet', 'said', 'chines', 'hous', 'first', 'nation', 'say', 'us', 'trade', 'white', 'jinp', 'report', 'donald', 'today', 'center']
+
+```
+
+Pretty cool right?
+
+The next step down the line was to investigate if we could use these topics and the trained LDA model to classify/infer for individual documents
+what topic it fit under. My attempt at this was to simply take the topic with the highest proportion of attributed to the document as the
+classification.
+
+```python
+lda_prob_matrix = [myLda[article_bow] for article_bow in articles_bow]
+lda_prob_matrix
+#Extract max prob topic
+max(lda_prob_matrix[0],  key=lambda x:x[1])
+lda_prob_max = [max(article, key=lambda x:x[1]) for article in lda_prob_matrix]
+lda_prob_max[:20]
+```
+
+
+
+
+    [(2, 0.21093155808700731),
+     (7, 0.20494757174630548),
+     (2, 0.20526697142029282),
+     (2, 0.17327019804657892),
+     (0, 0.16994033188384769),
+     (2, 0.19810306905796518),
+     (7, 0.26146754527848654),
+     (7, 0.18148925890000037),
+     (7, 0.18148922353740635),
+     (2, 0.20871054897498487),
+     (2, 0.21575822866862615),
+     (2, 0.21507037676232743),
+     (2, 0.2008104297178149),
+     (0, 0.20165705295331193),
+     (0, 0.16375894073899855),
+     (2, 0.20957460370950373),
+     (7, 0.16625981679573373),
+     (7, 0.20677408447883283),
+     (2, 0.18467412354393847),
+     (7, 0.16617177316323598)]
+
+
+
+
+```
+Here are the titles of the first 20 articles that are categorized above:
+
+
+![20 Titles](http://imgur.com/5iYdpsP "20 Titles")
+
+However it seemed from the results that the LDA model ended up attributing to each document relatively similar proportions to several
+topics in this model, and taking the maximizer didn't give me good results from initial exploration.
+
+## Steps forward with LDA Modeling
+The next idea I would like to explore is using the trained LDA model and its probability vectors for each bag of words represented document
+to perform clustering. Will clustering potentially do a beter job of delineating "meaning" of an article than simply
+taking the highest probability topic?
+
+## Overall Progress
+So far we've worked hard to collect a representative training set for our dataset using our webscraping API and perform several machine learning analyses for classification and clustering. We hope to apply these analyses to classifying and clustering real time news data. In order to train, classify, and visualize relationships between articles rapidly in real time, we are looking into using python's Pickle bytestream framework to save trained models that we will constantly update.. 
