@@ -19,7 +19,7 @@ At the end of Data Science, we've tackled the following tasks
 - Explored interesting data relationships informing our decisions in creating our particular clustering and classification techniques
 - Built a clean and intuitive Chrome extension/web experience to utilize our algorithm. As any user traverses the web, they see CrossCheck validating articles in the background, and can also view more detailed statistics on demand. The user can also highlight and CrossCheck any particular body of text on demand.
 
-##Conclusions
+## Conclusions
 Have we set out to achieve what we aimed to achieve?
 
 Looking at the goals we set out during our pre-proposal and first blog post, we initially looked to create a broad algorithm to classify news articles. Since then we've worked hard to refine our conception of "truth" and "fake", and established a new concept of "baseline" rather than "truth". We've also honed our algorithm to cater to a much more specific task. Furthermore, we've added ideas and machine learning attempts to provide an actual context for users.
