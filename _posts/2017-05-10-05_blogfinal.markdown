@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "Final Blog Post"
+title:  "Verifying News: Final Blog Post"
 date:   2017-05-10 03:37:00
 categories: main
 ---
